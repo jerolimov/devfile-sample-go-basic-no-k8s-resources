@@ -29,6 +29,9 @@ components:
       deployment/memoryRequest: 10Mi
       deployment/container-port: 8081
 commands:
+  - id: build-image
+    apply:
+      component: build
   - id: deploy
     composite:
       commands:
