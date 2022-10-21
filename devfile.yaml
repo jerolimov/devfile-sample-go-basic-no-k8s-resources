@@ -14,14 +14,14 @@ parent:
   id: go
   registryUrl: "https://registry.devfile.io"
 components:
-  - name: outerloop-build
+  - name: build
     image:
       imageName: go-image:latest
       dockerfile:
         uri: docker/Dockerfile
         buildContext: .
         rootRequired: false
-  - name: outerloop-deploy
+  - name: deploy
     attributes:
       deployment/replicas: 1
       deployment/cpuLimit: "100m"
@@ -29,8 +29,6 @@ components:
       deployment/memoryLimit: 100Mi
       deployment/memoryRequest: 10Mi
       deployment/container-port: 8081
-    kubernetes:
-      uri: outerloop-deploy.yaml
 commands:
   - id: build-image
     apply:
