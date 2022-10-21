@@ -21,7 +21,6 @@ components:
         uri: docker/Dockerfile
         buildContext: .
         rootRequired: false
-  - name: deploy
     attributes:
       deployment/replicas: 1
       deployment/cpuLimit: "100m"
@@ -30,12 +29,6 @@ components:
       deployment/memoryRequest: 10Mi
       deployment/container-port: 8081
 commands:
-  - id: build-image
-    apply:
-      component: outerloop-build
-  - id: deployk8s
-    apply:
-      component: outerloop-deploy
   - id: deploy
     composite:
       commands:
